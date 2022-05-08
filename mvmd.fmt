@@ -29,7 +29,7 @@ else:
 Command_copyCommand [k1 GetSynonym1 k2 todir k3 GetSynonym2]
 = [[\nshutil.copy ('${GetSynonym1}', '${todir}/${GetSynonym2}')]]
 
-Command_parameterSynonym [k1 Synonym k2 ParamName Rec] = [[${k1}${Synonym}${k2}${ParamName}${Rec}]]
+Command_parameterSynonym [k1 Synonym k2 ParamName Rec] = [[${Synonym} = ${ParamName}${Rec}]]
 
 SetSynonym [k name] = [[${name}]]
 GetSynonym [name] = [[${name}]]
@@ -39,6 +39,7 @@ Parameter_to [k] = [[YYY]]
 name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
 nameFirst [c] = [[${c}]]
 nameRest [c] = [[${c}]]
+nameLetter [c] = [[${c}]]
 
 ParamName_p1 [k] = [[p1]]
 ParamName_p2 [k] = [[p2]]
