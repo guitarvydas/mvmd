@@ -27,7 +27,7 @@ else:
 ]]
 
 Command_copyCommand [k1 GetSynonym1 k2 todir k3 GetSynonym2 @Rec]
-= [[\nshutil.copy ('${GetSynonym1}', '${todir}/${GetSynonym2}')${Rec}]]
+= [[\nshutil.copy (f'\{${GetSynonym1}\}', f'\{${todir}\}/\{${GetSynonym2}\}')${Rec}]]
 
 Command_parameterSynonym [k1 Synonym k2 ParamName @Rec] = [[\n${Synonym} = ${ParamName}${Rec}]]
 
@@ -38,6 +38,8 @@ name [nameFirst @nameRest] = [[${fmt.pythonify (nameFirst + nameRest)}]]
 nameFirst [c] = [[${c}]]
 nameRest [c] = [[${c}]]
 nameLetter [c] = [[${c}]]
+delimiter [c] = [[${c}]]
+bracket [c] = [[${c}]]
 
 ParamName_p1 [k] = [[p1]]
 ParamName_p2 [k] = [[p2]]
