@@ -1,12 +1,12 @@
 Main [lb SyncBox rb] 
-= [[
+= {{ fmt.setIndent (0); }}
+[[
 import os
 import glob
 import re
 import shutil
 
-def mvmd (p1, p2):
-${SyncBox}
+def mvmd (p1, p2):${fmt.lines (SyncBox)}
 ]]
 
 SyncBox [Command] = [[${Command}]]
