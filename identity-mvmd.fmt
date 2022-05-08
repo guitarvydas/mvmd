@@ -11,6 +11,8 @@ Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym Rec]
 Command_copyCommand [k1 GetSynonym1 k2 Parameter k3 GetSynonym2]
 = [[${k1}${GetSynonym1}${k2}${Parameter}${k3}${GetSynonym2}]]
 
+Command_parameterSynonym [k1 Synonym k2 ParamName Rec] = [[${k1}${Synonym}${k2}${ParamName}${Rec}]]
+
 SetSynonym [k name] = [[${k}${name}]]
 GetSynonym [name] = [[${name}]]
 Parameter_from [k] = [[${k}]]
@@ -20,3 +22,5 @@ name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
 nameFirst [c] = [[${c}]]
 nameRest [c] = [[${c}]]
 
+ParamName_p1 [k] = [[${k}]]
+ParamName_p2 [k] = [[${k}]]

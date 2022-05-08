@@ -7,6 +7,7 @@ Command =
  | "for" "every" ".md" "file" "in" Parameter "/" "_posts" SetSynonym Rec -- foreveryCommand
  | "strip" "date" "from" "front" "of" GetSynonym SetSynonym          Rec -- stripCommand
  | "copy" GetSynonym "to" Parameter "/" GetSynonym                       -- copyCommand
+ | "parameter" name "=" ParamName                                    Rec -- parameterSynonym
  
 SetSynonym = "=>" name
 GetSynonym = name
@@ -17,6 +18,10 @@ Parameter =
 name = nameFirst nameRest*
 nameFirst = letter | "_"
 nameRest = digit | nameFirst
+
+ParamName =
+ | "$1" -- p1
+ | "$2" -- p2
 }
 
 

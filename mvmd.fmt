@@ -5,29 +5,31 @@ import glob
 import re
 import shutil
 
-def mvmd (posts, todir):
+def mvmd (p1, p2):
 ${SyncBox}
 ]]
 
 SyncBox [Command] = [[${Command}]]
 Rec [lb SyncBox rb] = [[${SyncBox}]]
 
-Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym SyncBox]
-= [[\nfor ${SetSynonym} in glob.glob ('${Parameter}/*.md'):]]
+Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym Rec]
+= [[\nfor ${SetSynonym} in glob.glob ('${Parameter}/*.md'):${Rec}]]
 
-Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym SyncBox]
+Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym Rec]
 = [[
 temp = os.path.basename (${GetSynonym})
 match = re.match (r'(^[0-9-]+)(.*)', temp)
 if match:
     ${SetSynonym} = f'{todir}/{match.group (2)}'
-    ${SyncBox}
+    ${Rec}
 else:
     pass
 ]]
 
 Command_copyCommand [k1 GetSynonym1 k2 todir k3 GetSynonym2]
 = [[\nshutil.copy ('${GetSynonym1}', '${todir}/${GetSynonym2}')]]
+
+Command_parameterSynonym [k1 Synonym k2 ParamName Rec] = [[${k1}${Synonym}${k2}${ParamName}${Rec}]]
 
 SetSynonym [k name] = [[${name}]]
 GetSynonym [name] = [[${name}]]
@@ -38,3 +40,5 @@ name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
 nameFirst [c] = [[${c}]]
 nameRest [c] = [[${c}]]
 
+ParamName_p1 [k] = [[p1]]
+ParamName_p2 [k] = [[p2]]
