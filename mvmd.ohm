@@ -4,25 +4,25 @@ SyncBox = Command
 Rec = "{" SyncBox "}"
 
 Command =
- | "for" "every" ".md" "file" "in" Parameter "/" "_posts" SetSynonym Rec? -- foreveryCommand
- | "strip" "date" "from" "front" "of" GetSynonym SetSynonym          Rec? -- stripCommand
- | "copy" GetSynonym "to" Parameter "/" GetSynonym                   Rec? -- copyCommand
- | "parameter" name "=" ParamName                                    Rec? -- parameterSynonym
+ | "for" "every" ".md" "file" "in" name "/" "_posts" SetSynonym Rec? -- foreveryCommand
+ | "strip" "date" "from" "front" "of" GetSynonym SetSynonym     Rec? -- stripCommand
+ | "copy" GetSynonym "to" name "/" GetSynonym                   Rec? -- copyCommand
+ | "parameter" name "=" ParamName                               Rec? -- parameterSynonym
  
 SetSynonym = "=>" name
 GetSynonym = name
-Parameter =
-  | "<fromdir>" -- from
-  | "<todir>"   -- to
 
 name = nameFirst nameRest*
 nameFirst = nameLetter
 nameRest = digit | nameFirst
-nameLetter = ~space ~digit any
-
+nameLetter = ~space ~digit ~delimiter any
+delimiter = "/" | bracket | ","
+bracket = "(" | ")" | "[" | "]" | "{" | "}"
 ParamName =
  | "$1" -- p1
  | "$2" -- p2
 }
+
+
 
 

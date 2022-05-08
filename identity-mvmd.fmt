@@ -1,6 +1,6 @@
 Main [lb SyncBox rb] = [[${lb}${SyncBox}${rb}]]
-SyncBox [Command] = [${Command}]]
-Rec [lb SyncBox rb] = [${lb}${SyncBox}${rb}]]
+SyncBox [Command] = [[${Command}]]
+Rec [lb SyncBox rb] = [[${lb}${SyncBox}${rb}]]
 
 Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym @Rec]
 = [[${k1}${k2}${k3}${k4}${k5}${Parameter}${k6}${k7}${SetSynonym}${Rec}]]
@@ -15,13 +15,13 @@ Command_parameterSynonym [k1 Synonym k2 ParamName @Rec] = [[${k1}${Synonym}${k2}
 
 SetSynonym [k name] = [[${k}${name}]]
 GetSynonym [name] = [[${name}]]
-Parameter_from [k] = [[${k}]]
-Parameter_to [k] = [[${k}]]
 
 name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
 nameFirst [c] = [[${c}]]
 nameRest [c] = [[${c}]]
 nameLetter [c] = [[${c}]]
+delimiter [c] = [[${c}]]
+bracket [c] = [[${c}]]
 
 ParamName_p1 [k] = [[${k}]]
 ParamName_p2 [k] = [[${k}]]

@@ -12,10 +12,10 @@ ${SyncBox}
 SyncBox [Command] = [[${Command}]]
 Rec [lb SyncBox rb] = [[${SyncBox}]]
 
-Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym Rec]
-= [[\nfor ${SetSynonym} in glob.glob ('${Parameter}/*.md'):${Rec}]]
+Command_foreveryCommand [k1 k2 k3 k4 k5 Name k6 k7 SetSynonym @Rec]
+= [[\nfor ${SetSynonym} in glob.glob ('${Name}/*.md'):${Rec}]]
 
-Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym Rec]
+Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym @Rec]
 = [[
 temp = os.path.basename (${GetSynonym})
 match = re.match (r'(^[0-9-]+)(.*)', temp)
@@ -26,17 +26,15 @@ else:
     pass
 ]]
 
-Command_copyCommand [k1 GetSynonym1 k2 todir k3 GetSynonym2]
-= [[\nshutil.copy ('${GetSynonym1}', '${todir}/${GetSynonym2}')]]
+Command_copyCommand [k1 GetSynonym1 k2 todir k3 GetSynonym2 @Rec]
+= [[\nshutil.copy ('${GetSynonym1}', '${todir}/${GetSynonym2}')${Rec}]]
 
-Command_parameterSynonym [k1 Synonym k2 ParamName Rec] = [[${Synonym} = ${ParamName}${Rec}]]
+Command_parameterSynonym [k1 Synonym k2 ParamName @Rec] = [[\n${Synonym} = ${ParamName}${Rec}]]
 
 SetSynonym [k name] = [[${name}]]
 GetSynonym [name] = [[${name}]]
-Parameter_from [k] = [[XXX]]
-Parameter_to [k] = [[YYY]]
 
-name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
+name [nameFirst @nameRest] = [[${fmt.pythonify (nameFirst + nameRest)}]]
 nameFirst [c] = [[${c}]]
 nameRest [c] = [[${c}]]
 nameLetter [c] = [[${c}]]
