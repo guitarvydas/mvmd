@@ -1,12 +1,12 @@
 Main [lb SyncBox rb] = [[${lb}${SyncBox}${rb}]]
-SyncBox_rec [Command lb SyncBox rb] = [${Command}${lb}${SyncBox}${rb}]]
-SyncBox_bottom [Command] = [${Command}]]
+SyncBox [Command] = [${Command}]]
+Rec [lb SyncBox rb] = [${lb}${SyncBox}${rb}]]
 
-Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym]
-= [[${k1}${k2}${k3}${k4}${k5}${Parameter}${k6}${k7}${SetSynonym}]]
+Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym Rec]
+= [[${k1}${k2}${k3}${k4}${k5}${Parameter}${k6}${k7}${SetSynonym}${Rec}]]
 
-Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym]
-= [[${k1}${k2}${k3}${k4}${k5}${GetSynonym}${SetSynonym}]]
+Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym Rec]
+= [[${k1}${k2}${k3}${k4}${k5}${GetSynonym}${SetSynonym}${Rec}]]
 
 Command_copyCommand [k1 GetSynonym1 k2 Parameter k3 GetSynonym2]
 = [[${k1}${GetSynonym1}${k2}${Parameter}${k3}${GetSynonym2}]]

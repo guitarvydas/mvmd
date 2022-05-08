@@ -1,22 +1,40 @@
-Main [lb SyncBox rb] = [[${lb}${SyncBox}${rb}]]
-SyncBox_rec [Command lb SyncBox rb] = [${Command}${lb}${SyncBox}${rb}]]
-SyncBox_bottom [Command] = [${Command}]]
+Main [lb SyncBox rb] 
+= [[
+import os
+import glob
+import re
+import shutil
 
-Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym]
-= [[${k1}${k2}${k3}${k4}${k5}${Parameter}${k6}${k7}${SetSynonym}]]
+def mvmd (posts, todir):
+${SyncBox}
+]]
 
-Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym]
-= [[${k1}${k2}${k3}${k4}${k5}${GetSynonym}${SetSynonym}]]
+SyncBox [Command] = [[${Command}]]
+Rec [lb SyncBox rb] = [[${SyncBox}]]
 
-Command_copyCommand [k1 GetSynonym1 k2 Parameter k3 GetSynonym2]
-= [[${k1}${GetSynonym1}${k2}${Parameter}${k3}${GetSynonym2}]]
+Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym SyncBox]
+= [[\nfor ${SetSynonym} in glob.glob ('${Parameter}/*.md'):]]
 
-SetSynonym [k name] = [[${k}${name}]]
+Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym SyncBox]
+= [[
+temp = os.path.basename (${GetSynonym})
+match = re.match (r'(^[0-9-]+)(.*)', temp)
+if match:
+    ${SetSynonym} = f'{todir}/{match.group (2)}'
+    ${SyncBox}
+else:
+    pass
+]]
+
+Command_copyCommand [k1 GetSynonym1 k2 todir k3 GetSynonym2]
+= [[\nshutil.copy ('${GetSynonym1}', '${todir}/${GetSynonym2}')]]
+
+SetSynonym [k name] = [[${name}]]
 GetSynonym [name] = [[${name}]]
-Parameter_from [k] = [[${k}]]
-Parameter_to [k] = [[${k}]]
+Parameter_from [k] = [[XXX]]
+Parameter_to [k] = [[YYY]]
 
 name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
 nameFirst [c] = [[${c}]]
-nameRest [c] [[${c}]]
+nameRest [c] = [[${c}]]
 

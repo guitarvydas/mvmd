@@ -1,13 +1,12 @@
 script {
 Main = "{" SyncBox "}"
-SyncBox = 
-  | Command "{" SyncBox "}" -- rec
-  | Command                 -- bottom
+SyncBox = Command
+Rec = "{" SyncBox "}"
 
 Command =
- | "for" "every" ".md" "file" "in" Parameter "/" "_posts" SetSynonym -- foreveryCommand
- | "strip" "date" "from" "front" "of" GetSynonym SetSynonym          -- stripCommand
- | "copy" GetSynonym "to" Parameter "/" GetSynonym                   -- copyCommand
+ | "for" "every" ".md" "file" "in" Parameter "/" "_posts" SetSynonym Rec -- foreveryCommand
+ | "strip" "date" "from" "front" "of" GetSynonym SetSynonym          Rec -- stripCommand
+ | "copy" GetSynonym "to" Parameter "/" GetSynonym                       -- copyCommand
  
 SetSynonym = "=>" name
 GetSynonym = name
