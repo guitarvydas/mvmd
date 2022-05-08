@@ -13,15 +13,14 @@ SyncBox [Command] = [[${Command}]]
 Rec [lb SyncBox rb] = [[${SyncBox}]]
 
 Command_foreveryCommand [k1 k2 k3 k4 k5 Name k6 k7 SetSynonym @Rec]
-= [[\nfor ${SetSynonym} in glob.glob ('\{${Name}\}/*.md'):${Rec}]]
+= [[\nfor ${SetSynonym} in glob.glob ('\{${Name}\}/*.md'):${fmt.ind ()}${fmt.lines (Rec)}${fmt.outd ()}]]
 
 Command_stripCommand [k1 k2 k3 k4 k5 Synonym SetSynonym @Rec]
 = [[
 temp = os.path.basename (${Synonym})
 match = re.match (r'(^[0-9-]+)(.*)', temp)
 if match:
-    ${SetSynonym} = match.group (2)${Rec}
-else:
+    ${SetSynonym} = match.group (2)${fmt.ind ()}${fmt.lines (Rec)}${fmt.outd ()}else:
     pass
 ]]
 

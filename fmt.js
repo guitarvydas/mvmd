@@ -7,16 +7,12 @@ exports.pythonify = function (s) {
 
 var indent = undefined;
 
-exports.setIndent = function (n) { indext = n; }
-exports.ind = function () { indent  += 4; return ""; }
-exports.outd = function () { indent  -= 4; return ""; }
+exports.setIndent = function (n) { indent = n; }
+exports.ind = function () { indent += 4; return ""; }
+exports.outd = function () { indent -= 4; return ""; }
 
 exports.lines = function (s) {
-    console.log ('b lines...');
-    console.log (s);
-    console.log ('e lines...');
     var lines = s.split ('\n');
-    console.log (lines);
     var indentedLines = ""
     lines.forEach (line => {
 	indentedLines += spaces () + line + '\n';
