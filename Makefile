@@ -5,6 +5,7 @@ format=mvmd.fmt
 src=mvmd.das
 here=`pwd`
 support=--fmt=`pwd`/fmt.js
+out=mvmd.py
 
 script: grokAndReformat
 
@@ -14,5 +15,5 @@ identity:
 	${prep} "." '$$' ${grammar} ${identity-format} --stop=1 ${support} <${src}
 
 grokAndReformat:
-	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} <${src}
+	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} <${src} >${out}
 
