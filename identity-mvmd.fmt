@@ -1,0 +1,22 @@
+Main [lb SyncBox rb] = [[${lb}${SyncBox}${rb}]]
+SyncBox_rec [Command lb SyncBox rb] = [${Command}${lb}${SyncBox}${rb}]]
+SyncBox_bottom [Command] = [${Command}]]
+
+Command_foreveryCommand [k1 k2 k3 k4 k5 Parameter k6 k7 SetSynonym]
+= [[${k1}${k2}${k3}${k4}${k5}${Parameter}${k6}${k7}${SetSynonym}]]
+
+Command_stripCommand [k1 k2 k3 k4 k5 GetSynonym SetSynonym]
+= [[${k1}${k2}${k3}${k4}${k5}${GetSynonym}${SetSynonym}]]
+
+Command_copyCommand [k1 GetSynonym1 k2 Parameter k3 GetSynonym2]
+= [[${k1}${GetSynonym1}${k2}${Parameter}${k3}${GetSynonym2}]]
+
+SetSynonym [k name] = [[${k}${name}]]
+GetSynonym [name] = [[${name}]]
+Parameter_from [k] = [[${k}]]
+Parameter_to [k] = [[${k}]]
+
+name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
+nameFirst [c] = [[${c}]]
+nameRest [c] = [[${c}]]
+
