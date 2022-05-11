@@ -17,3 +17,6 @@ identity:
 grokAndReformat:
 	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} <${src} >${out}
 
+view:
+	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} --view <${src} >${out}
+

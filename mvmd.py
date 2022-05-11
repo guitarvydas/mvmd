@@ -15,10 +15,6 @@ def mvmd (p1, p2):
             shutil.copy (f'{filename}', f'{LTtoGT}/{strippedFilename}')
         else:
             pass
-
-fromdir = os.path.expanduser ('~/Desktop/blogs/guitarvydas.github.io/_posts')
-todir = os.path.expanduser ('~/Dropbox/ps/WIP/blogs')
-mvmd (fromdir, todir)
         
     
 

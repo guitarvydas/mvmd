@@ -2,7 +2,7 @@
   { parameter <to> = $2
     { for every .md file in <from>/_posts => filename
       { strip date from front of filename => strippedFilename
-	{ copy filename to <to>/strippedFilename }
+        { copy filename to <to>/strippedFilename }
       }
     }
   }
